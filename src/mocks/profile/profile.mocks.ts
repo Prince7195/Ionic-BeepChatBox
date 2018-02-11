@@ -1,29 +1,33 @@
-import { User } from "../../models/user/user.interface";
+import { Profile } from "../../models/profile/profile.interface";
 
-const userList: User[] = [
+const userList: Profile[] = [
   {
     firstName: "Vijay",
     lastName: "Deepak",
     email: "VijayDeepak@email.com",
-    avatar: "assets/imgs/Male.png"
+    avatar: "assets/imgs/Male.png",
+    dateOfBirth: new Date
   },
   {
     firstName: "Prince",
     lastName: "Deepak",
     email: "PrinceDeepak@email.com",
-    avatar: "assets/imgs/Male.png"
+    avatar: "assets/imgs/Male.png",
+    dateOfBirth: new Date
   },
   {
     firstName: "Vishnu",
     lastName: "Vardhan",
     email: "VishnuVardhan@email.com",
-    avatar: "assets/imgs/Male.png"
+    avatar: "assets/imgs/Male.png",
+    dateOfBirth: new Date
   },
   {
     firstName: "Radha",
     lastName: "Krishna",
     email: "RadhaKrishna@email.com",
-    avatar: "assets/imgs/Male.png"
+    avatar: "assets/imgs/Male.png",
+    dateOfBirth: new Date
   }
 ];
 

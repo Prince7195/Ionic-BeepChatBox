@@ -1,5 +1,5 @@
 import { Message } from "../../models/messages/message.interface";
-import { USERS_LIST } from "../users/users.mocks";
+import { USERS_LIST } from "../profile/profile.mocks";
 
 let userList = USERS_LIST;
 

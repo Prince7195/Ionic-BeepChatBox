@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { LoginResponse } from '../../models/login/login.response.interface';
 
 /**
  * Generated class for the RegisterPage page.
@@ -15,7 +16,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private toast: ToastController
+  ) {
+  }
+
+  register(event: LoginResponse) {
+    if(!event.error) {
+      this.toast.create({
+        message: `Account Created: ${event.result.email}`,
+        duration: 3000
+      }).present();
+    } else {
+      this.toast.create({
+        message: `Account not Created: ${event.error.message}`,
+        duration: 3000
+      }).present();
+    }
   }
 
 }

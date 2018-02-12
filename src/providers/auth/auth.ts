@@ -5,16 +5,20 @@ import { Account } from '../../models/account/account.interface';
 import { LoginResponse } from '../../models/login/login.response.interface';
 
 /*
-  Generated class for the AuthProvider provider.
+  Generated class for the AuthService provider.
 
   See https://angular.io/guide/dependency-injection for more info on providers
   and Angular DI.
 */
 @Injectable()
-export class AuthProvider {
+export class AuthService {
 
   constructor(public auth: AngularFireAuth) {
 
+  }
+
+  getAuthenticatedUser() {
+    return this.auth.authState;
   }
 
   async createUserWithEmailAndPassword(account: Account) {

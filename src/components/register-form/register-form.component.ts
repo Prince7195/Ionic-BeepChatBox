@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
 import { Account } from "../../models/account/account.interface"
-import { AuthProvider } from '../../providers/auth/auth';
+import { AuthService } from '../../providers/auth/auth';
 import { LoginResponse } from '../../models/login/login.response.interface';
 
 /**
@@ -19,7 +19,7 @@ export class RegisterFormComponent {
   account = {} as Account;
   @Output() registerStatus: EventEmitter<LoginResponse>;
 
-  constructor(private auth: AuthProvider) {
+  constructor(private auth: AuthService) {
     this.registerStatus = new EventEmitter<LoginResponse>();
   }
 

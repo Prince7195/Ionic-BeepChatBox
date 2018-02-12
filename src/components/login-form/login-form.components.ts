@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Account } from '../../models/account/account.interface';
 import { LoginResponse } from '../../models/login/login.response.interface';
-import { AuthProvider } from '../../providers/auth/auth';
+import { AuthService } from '../../providers/auth/auth';
 
 /**
  * Generated class for the LoginFormComponent component.
@@ -23,7 +23,7 @@ export class LoginFormComponent {
   constructor(
     private afAuth: AngularFireAuth,
     private navCtrl: NavController,
-    private auth: AuthProvider
+    private auth: AuthService
   ) {
     this.loginStatus = new EventEmitter<LoginResponse>();
   }

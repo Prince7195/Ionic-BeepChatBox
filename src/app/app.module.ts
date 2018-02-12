@@ -10,7 +10,8 @@ import { AngularFireDatabase } from "angularfire2/database-deprecated";
 
 import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './app.firebase.config';
-import { AuthProvider } from '../providers/auth/auth';
+import { AuthService } from '../providers/auth/auth';
+import { DataService } from '../providers/data/data';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AuthProvider } from '../providers/auth/auth';
     SplashScreen,
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthService,
+    DataService
   ]
 })
 export class AppModule {}

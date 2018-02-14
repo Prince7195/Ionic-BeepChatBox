@@ -22,4 +22,8 @@ export class InboxPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  navigateToSearchPage() {
+    this.navCtrl.push("SearchUserPage");
+  }
+
 }

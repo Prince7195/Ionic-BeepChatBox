@@ -16,16 +16,20 @@ export class ProfileSearchComponent {
 
   query: string;
 
+  profileCollection: Profile[];
+
   profileList: Profile[];
 
   constructor(private data: DataService) {
   }
 
   searchUser(query: string) {
-    this.data.searchUser(query).subscribe(profiles => {
-      console.log(profiles);
-      this.profileList = profiles;
-    });
+    const trimmedQuery = query.trim();
+    if (trimmedQuery === query) {
+      this.data.searchUser().subscribe(profiles => {
+        this.profileList = profiles.filter(profile => profile.firstName == trimmedQuery);
+      });
+    }
   }
 
 }

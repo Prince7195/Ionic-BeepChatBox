@@ -7,3 +7,5 @@
     https://github.com/angular/angularfire2/blob/master/docs/rtdb/querying-lists.md
 
     https://stackoverflow.com/questions/42149332/how-to-properly-query-a-firebase-list-in-angularfire2
+
+    https://stackoverflow.com/questions/48651674/argument-of-type-query-limittolast-number-orderbykey-boolean-is

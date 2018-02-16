@@ -8,6 +8,11 @@
 
   <ion-navbar>
     <ion-title text-center>Profile</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="navigateToEditProfilePage()">
+        Edit
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,6 +20,6 @@
 
 <ion-content>
 
-  <app-profile-view></app-profile-view>
+  <app-profile-view (existingProfile)="getExistingProfile($event)" ></app-profile-view>
 
 </ion-content>

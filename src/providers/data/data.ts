@@ -20,13 +20,8 @@ export class DataService {
   constructor(private database: AngularFireDatabase) {
   }
 
-  searchUser(firstName: string) {
-    const query = this.database.list("/profiles/", {
-      query: {
-        orderByChild: "firstName",
-        equalTo: firstName
-      }
-    });
+  searchUser() {
+    const query = this.database.list("profiles");
     return query.take(1);
   }
 
@@ -48,3 +43,14 @@ export class DataService {
   }
 
 }
+
+/**
+ * const query = this.database.list("/profiles/", ref => ref.orderByChild('firstName').equalTo(firstName));
+
+   const query = this.database.list("/profiles/", {
+      query: {
+        orderByChild: "firstName",
+        equalTo: firstName
+      }
+    });
+ */

@@ -1,0 +1,16 @@
+<ion-item no-lines class="chat-message__message-right" *ngIf="chatMessages.userToId === userId; else from">
+  <ion-avatar item-right>
+    <img src="assets/imgs/Male.png" alt="">
+  </ion-avatar>
+  <h2>{{chatMessages?.userFromProfile?.firstName}} {{chatMessages?.userFromProfile?.lastName}}</h2>
+  <p>{{chatMessages?.content}}</p>
+</ion-item>
+<ng-template #from>
+  <ion-item no-lines>
+    <ion-avatar item-left>
+      <img src="assets/imgs/Female.png" alt="">
+    </ion-avatar>
+    <h2>{{chatMessages?.userToProfile?.firstName}} {{chatMessages?.userToProfile?.lastName}}</h2>
+    <p>{{chatMessages?.content}}</p>
+  </ion-item>
+</ng-template>

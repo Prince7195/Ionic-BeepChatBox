@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FirebaseObjectObservable, AngularFireDatabase, FirebaseListObservable } from "angularfire2/database-deprecated";
 import { User } from "firebase/app";
+import { database } from "firebase";
 import "rxjs/add/operator/take";
+import "rxjs/add/operator/map";
+import "rxjs/add/operator/mergeMap";
 
 import { Profile } from '../../models/profile/profile.interface';
+import { AuthService } from "../auth/auth";
 
 /*
   Generated class for the DataService provider.
@@ -17,12 +21,22 @@ export class DataService {
   profileObject: FirebaseObjectObservable<Profile>;
   profileList: FirebaseListObservable<Profile>;
 
-  constructor(private database: AngularFireDatabase) {
+  constructor(
+    private database: AngularFireDatabase,
+    private auth: AuthService
+  ) {
   }
 
   searchUser() {
     const query = this.database.list("profiles");
     return query.take(1);
+  }
+
+  getAuthenticatedUserProfile() {
+    return this.auth.getAuthenticatedUser()
+      .map(user => user.uid)
+      .mergeMap(authId => this.database.object(`/profiles/${authId}`))
+      .take(1);
   }
 
 
@@ -40,6 +54,20 @@ export class DataService {
       console.log(err);
       return false;
     }
+  }
+
+  setUserOnline(profile: Profile) {
+    const ref = database().ref(`online-users/${profile.$key}`);
+    try {
+      ref.update({ ...profile });
+      ref.onDisconnect().remove();
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
+  getOnlineUsers(): FirebaseListObservable<Profile[]> {
+    return this.database.list('online-users');
   }
 
 }

@@ -13,6 +13,7 @@ import { MyApp } from './app.component';
 import { FIREBASE_CONFIG } from './app.firebase.config';
 import { AuthService } from '../providers/auth/auth';
 import { DataService } from '../providers/data/data';
+import { ChatService } from '../providers/chat/chat';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DataService } from '../providers/data/data';
     AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
-    DataService
+    DataService,
+    ChatService
   ]
 })
 export class AppModule {}

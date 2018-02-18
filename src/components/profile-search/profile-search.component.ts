@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../providers/data/data';
 import { Profile } from '../../models/profile/profile.interface';
 
@@ -16,20 +16,26 @@ export class ProfileSearchComponent {
 
   query: string;
 
-  profileCollection: Profile[];
-
   profileList: Profile[];
 
+  @Output() selectedProfile: EventEmitter<Profile>;
+
   constructor(private data: DataService) {
+    this.selectedProfile = new EventEmitter<Profile>();
   }
 
   searchUser(query: string) {
     const trimmedQuery = query.trim();
     if (trimmedQuery === query) {
       this.data.searchUser().subscribe(profiles => {
+        console.log(profiles);
         this.profileList = profiles.filter(profile => profile.firstName == trimmedQuery);
       });
     }
+  }
+
+  selectProfile(profile: Profile) {
+    this.selectedProfile.emit(profile);
   }
 
 }

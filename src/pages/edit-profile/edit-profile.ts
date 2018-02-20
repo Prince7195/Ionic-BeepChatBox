@@ -23,7 +23,7 @@ export class EditProfilePage {
   }
 
   saveProfileResult(event: Boolean) {
-    event ? this.navCtrl.setRoot("ProfilePage") : console.log("Not Authenticated");
+    event ? this.navCtrl.setRoot("TabsPage") : console.log("Not Authenticated");
   }
 
 }

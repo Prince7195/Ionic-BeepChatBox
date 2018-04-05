@@ -13,9 +13,11 @@
 
 #Generate APK:
 
-1. run "ionic cordova build --release android".
+1. chnage the widget id in config.xml
 
-2. It generates the unsigned apk file.
+2. run "ionic cordova build --release android".
+
+3. It generates the unsigned apk file..
 
 #Sign The Apk:
 
